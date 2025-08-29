@@ -1,0 +1,11 @@
+img {
+    float: left;
+    margin-right: 20px;
+}
+
+.pic {
+    overflow: hidden;
+    height: 300px;
+    line-height: 2;
+}
+
