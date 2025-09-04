@@ -9,3 +9,8 @@ img {
     line-height: 2;
 }
 
+/* default site settings */
+
+body {
+    background-color: rgb(240, 203, 133);
+}
