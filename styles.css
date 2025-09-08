@@ -3,7 +3,7 @@ img {
     margin-right: 20px;
 }
 
-.pic {
+#pic {
     overflow: hidden;
     height: 300px;
     line-height: 2;
@@ -11,23 +11,28 @@ img {
 
 /* default site settings */
 
-body {
+#body {
     background-color: rgb(240, 203, 133);
 }
 
-footer {
+#copyright {
     background-color: rgb(92, 163, 205);
 }
 
-h1 {
+#h1 {
     background-color: white;
 }
 
-.pic {
+#pic {
     background-color: rgb(92, 163, 205);
 
 }
 
-.projects {
+#projects {
     background-color: rgb(92, 163, 205);
+}
+
+#button1, #button2, #button3 {
+    background-color: white; 
+    color: black;
 }
