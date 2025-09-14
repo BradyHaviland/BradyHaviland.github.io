@@ -3,10 +3,19 @@ img {
     margin-right: 20px;
 }
 
-#pic {
+#pic{
     overflow: hidden;
     height: 300px;
     line-height: 2;
+}
+
+#thePerimeterDiv, #theAreaDiv  {
+    overflow: hidden;
+
+}
+
+#theVolumeDiv, #siteSettings, #footer {
+    clear: both;
 }
 
 /* default site settings */

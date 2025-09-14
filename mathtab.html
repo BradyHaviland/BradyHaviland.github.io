@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Computations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts/scripts.js"></script>
+    <a href="index.html">Brady's Portfolio</a>
+</head>
+<body>
+    <h1 id = "h1">Perimeter, Area and Volume Calculator</h1>
+<div id ="thePerimeterDiv">
+    <h2>Perimeter</h2>
+    <p>What is the perimeter of this rectangle?</p>
+   <img src="/images/perimetercuboid copy.jpeg" alt = "Perimeter formula of a rectangle." width="300" height="300">
+            <label for ="perimeterL"> Length(L): </label><input id = "perimeterL" type = "text">
+            <label for ="perimeterW"> Width(W): </label><input id = "perimeterW" type = "text">
+            <button onclick="getPerimeter()">=</button>
+
+
+    <p id ="perimeterAnswer"></p>
+</div>
+   
+<div id =" theAreaDiv">
+    <h2>Area</h2>
+    <p>What is the area of this rectangle?</p>
+        <img src="/images/areaCuboid.jpeg" alt = "Area formula for a rectangle." width="300" height="300">
+            <label for ="areaL"> Length(L): </label><input id = "areaL" type = "text">
+            <label for ="areaW"> Width(W): </label><input id = "areaW" type = "text">
+        <button onclick="getArea()">=</button>
+
+    <p id ="areaAnswer"></p>
+</div>
+
+<div id = "theVolumeDiv">
+    <h2>Volume</h2>
+    <p>What is the volume of this rectangle?</p>  
+    <img src="/images/volumeCuboi.jpeg" alt = "Volume formula of a rectangle." width="300" height="300"> 
+       
+        
+            <label for ="volumeL"> Length(L): </label><input id = "volumeL" type = "text">
+            <label for ="volumeW"> Width(W): </label><input id = "volumeW" type = "text">
+            <label for ="volumeH"> Height(H): </label><input id = "volumeH" type = "text">
+        <button onclick="getVolume()">=</button>
+
+    <p id ="volumeAnswer"></p>
+</div>
+
+<div id = "siteSettings">
+        <h3>Site Settings</h3>
+        <button id ="button1" onclick="defaultMode()">Default</button>
+        <button id ="button2" onclick="darkMode()">Dark Mode</button>
+        <button id ="button3" onclick="lightMode()">Light Mode</button>
+</div>
+
+<div id ="footer">
+        <footer>
+        <p id="copyright"> &copy; Copyright me. 2025.</p>
+        </footer>
+</div>
+
+    
+</body>
+</html>

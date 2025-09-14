@@ -35,3 +35,26 @@ function lightMode() {
     document.getElementById('button3').style = "background-color: rgb(205, 207, 208); color: black;" ;
     
 }
+
+function getPerimeter() {
+    var perimeterL = parseInt(document.getElementById("perimeterL").value);
+    var perimeterW = parseInt(document.getElementById("perimeterW").value);
+    document.getElementById("perimeterAnswer").innerHTML =  (2 * perimeterL) + (2 * perimeterW);
+
+}
+
+function getArea() {
+    var areaL = parseInt(document.getElementById("areaL").value);
+    var areaW = parseInt(document.getElementById("areaW").value);
+    document.getElementById("areaAnswer").innerHTML =  areaL * areaW;
+
+}
+
+function getVolume() {
+     var volumeL = parseInt(document.getElementById("volumeL").value);
+     var volumeW = parseInt(document.getElementById("volumeW").value);
+     var volumeH = parseInt(document.getElementById("volumeH").value);
+     document.getElementById("volumeAnswer").innerHTML =  volumeL * volumeW * volumeH;
+
+}
+
