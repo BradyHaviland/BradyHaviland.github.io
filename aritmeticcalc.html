@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Mean Calculator</title>
+    <a href="index.html">Brady's Portfolio</a>
+    <a href="tictactoe.html">Tic Tac Toe</a>
+    <a href="mathtab.html">Geometry Calculator</a>
+    <script>
+
+        function addNumber(){
+
+            
+            
+            
+            //if(isNaN){
+                //alert("You must enter a number, try again");
+            //}
+            const numbers = parseInt(document.getElementById("enterNum").value);
+            document.getElementById("numbersAdded").innerHTML = numbers;
+            
+
+            
+            console.log(numbers);
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+        }
+
+        function removeNumber(){
+
+        }
+
+        
+    </script>
+    
+    
+</head>
+<body>
+    
+    <h1>Data</h1>
+    <label for ="enterNum"> Enter a number: </label><input id = "enterNum" type = "text">
+    <button id = "addNum" onclick="addNumber()">Add Number</button>
+    
+    <button id = "removeNum" onclick="removeNumber()">Remove Number</button>
+
+    <h2>Current Data</h2>
+    <p id = "numbersAdded"></p>
+    
+    
+</body>
+</html>
