@@ -9,20 +9,30 @@
     <a href="mathtab.html">Geometry Calculator</a>
     <script>
 
+
+        let dataset = [];
+        let moreNumbers = [];
         function addNumber(){
-
-            
-            
-            
-            //if(isNaN){
-                //alert("You must enter a number, try again");
-            //}
-            const numbers = parseInt(document.getElementById("enterNum").value);
-            document.getElementById("numbersAdded").innerHTML = numbers;
+         
+            let numbers = parseInt(document.getElementById("enterNum").value);
+            dataset.push(numbers);
+            let number = dataset.concat(moreNumbers);
+            document.getElementById("numbersAdded").innerHTML = number;
             
 
             
-            console.log(numbers);
+            console.log(number);
+            
+
+             
+            
+            
+            
+           
+            
+
+            
+            //console.log(dataset);
         
             
             
