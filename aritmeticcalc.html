@@ -13,51 +13,69 @@
         let dataset = [];
         let moreNumbers = [];
         function addNumber(){
+
          
             let numbers = parseInt(document.getElementById("enterNum").value);
             dataset.push(numbers);
+            while (isNaN == false)
+                alert("You must enter a number, try again.");
+            
             let number = dataset.concat(moreNumbers);
             document.getElementById("numbersAdded").innerHTML = number;
-            
-
-            
-            console.log(number);
-            
-
-             
-            
-            
-            
-           
-            
-
-            
+            //console.log(number);
             //console.log(dataset);
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
         }
 
         function removeNumber(){
 
             let findNumbers = parseInt(document.getElementById("enterNum").value);
-            let number = dataset.concat(moreNumbers);
-            for (let findNumbers of number) {
-            //console.log(findNumbers);
-                
+            let number = dataset;
+
+            for(let findNumbers = 0; findNumbers < number.length; findNumbers++){
+            console.log(number[findNumbers] + " is at index " + findNumbers);
+            if (number == findNumbers)
             dataset.pop(findNumbers);
         }
-            document.getElementById("numbersAdded").innerHTML = number;
+            
 
-        }
+            //for (let findNumbers of number) {
+            //console.log(findNumbers);
+            document.getElementById("numbersAdded").innerHTML = number;
+            
+                
+            
+        //}
+
+        
+            
+    }
+
+    function computeMean(){
+
+        length = dataset.length;
+
+        let total = parseInt(document.getElementById("enterNum").value);
+        let number = dataset;
+        let count = 0;
+
+            for(let total = 0; total < number.length; total++){
+            console.log(number[total] + " is at index " + total);
+
+        //let total = parseInt(document.getElementById("enterNum").value);
+        //let number = dataset;
+        //for(let total = 0; total == length.length; total++){
+            //console.log(length[total] + " is at index " + total);
+            //divisor = console.log(dataset.length);
+
+
+
+        document.getElementById("Mean").innerHTML = "Mean";
+        //document.getElementById("meanWritten").innerHTML = "Mean is " + meanAnswer + ".";
+            
+     }
+
+    }
+        
 
         
     </script>
@@ -71,10 +89,14 @@
     <button id = "addNum" onclick="addNumber()">Add Number</button>
     
     <button id = "removeNum" onclick="removeNumber()">Remove Number</button>
+    <button id = "computeMean" onclick="computeMean()">Compute Mean</button>
 
     <h2>Current Data</h2>
     <p id = "numbersAdded"></p>
     
-    
+    <h2 id = "Mean"></h2>
+    <p id = "meanWritten"></p>
+
+
 </body>
 </html>
