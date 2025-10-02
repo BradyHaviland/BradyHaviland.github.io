@@ -17,13 +17,15 @@
          
             let numbers = parseInt(document.getElementById("enterNum").value);
             dataset.push(numbers);
-            while (isNaN == false)
+            if(isNaN(numbers)){
                 alert("You must enter a number, try again.");
-            
+            }else{
             let number = dataset.concat(moreNumbers);
             document.getElementById("numbersAdded").innerHTML = number;
             //console.log(number);
             //console.log(dataset);
+            
+        }
         }
 
         function removeNumber(){
@@ -58,13 +60,11 @@
         let number = dataset;
         let count = 0;
 
-            for(let total = 0; total < number.length; total++){
-            console.log(number[total] + " is at index " + total);
+            for(let i = 0; i < number.length; i++){
+            console.log(number[i++]);
 
-        //let total = parseInt(document.getElementById("enterNum").value);
-        //let number = dataset;
         //for(let total = 0; total == length.length; total++){
-            //console.log(length[total] + " is at index " + total);
+            //console.log(length[i] + " is at index " + i);
             //divisor = console.log(dataset.length);
 
 
