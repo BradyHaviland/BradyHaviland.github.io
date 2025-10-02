@@ -48,6 +48,15 @@
 
         function removeNumber(){
 
+            let findNumbers = parseInt(document.getElementById("enterNum").value);
+            let number = dataset.concat(moreNumbers);
+            for (let findNumbers of number) {
+            //console.log(findNumbers);
+                
+            dataset.pop(findNumbers);
+        }
+            document.getElementById("numbersAdded").innerHTML = number;
+
         }
 
         
