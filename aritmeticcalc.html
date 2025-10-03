@@ -14,7 +14,7 @@
         function addNumber(){
 
          
-                let numberBeingAdded = parseInt(document.getElementById("enterNum").value);
+                let numberBeingAdded = parseFloat(document.getElementById("enterNum").value);
                 
                 if(isNaN(numberBeingAdded)){
                     alert("You must enter a number, try again.");
@@ -29,7 +29,7 @@
         
         function removeNumber(){
 
-            let findNumber = parseInt(document.getElementById("enterNum").value);
+            let findNumber = parseFloat(document.getElementById("enterNum").value);
             let index = dataset.indexOf(findNumber);
             console.log(index + "Index");
             console.log(dataset + "Dataset");
