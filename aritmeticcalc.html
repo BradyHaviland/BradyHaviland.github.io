@@ -11,68 +11,71 @@
 
 
         let dataset = [];
-        let moreNumbers = [];
         function addNumber(){
 
          
-            let numbers = parseInt(document.getElementById("enterNum").value);
-            dataset.push(numbers);
-            if(isNaN(numbers)){
-                alert("You must enter a number, try again.");
-            }else{
-            let number = dataset.concat(moreNumbers);
-            document.getElementById("numbersAdded").innerHTML = number;
-            //console.log(number);
-            //console.log(dataset);
+                let numberBeingAdded = parseInt(document.getElementById("enterNum").value);
+                
+                if(isNaN(numberBeingAdded)){
+                    alert("You must enter a number, try again.");
+                }else{
+                    dataset.push(numberBeingAdded);
+                document.getElementById("numbersAdded").innerHTML = dataset;
+                //console.log(number);
+                //console.log(dataset);
             
+            }
         }
-        }
-
+        
         function removeNumber(){
 
-            let findNumbers = parseInt(document.getElementById("enterNum").value);
-            let number = dataset;
+            let findNumber = parseInt(document.getElementById("enterNum").value);
+            let index = dataset.indexOf(findNumber);
+            console.log(index + "Index");
+            console.log(dataset + "Dataset");
 
-            for(let findNumbers = 0; findNumbers < number.length; findNumbers++){
-            console.log(number[findNumbers] + " is at index " + findNumbers);
-            if (number == findNumbers)
-            dataset.pop(findNumbers);
-        }
+            for(let indexes = 0; indexes < dataset.length; indexes++){
+            //console.log(number[findNumbers]); //+ " is at index " + findNumbers);
             
-
-            //for (let findNumbers of number) {
-            //console.log(findNumbers);
-            document.getElementById("numbersAdded").innerHTML = number;
             
+                if (dataset[index] != findNumber){
+                    alert("That number does not exist, please enter a number in the dataset");
                 
-            
-        //}
+                }else{
+                    dataset.splice(dataset.indexOf(findNumber),1);
+                    console.log(findNumber + "Number to delete");
+                    console.log(dataset + "dataset");
+                    document.getElementById("numbersAdded").innerHTML = dataset;
+                    return;
+                    
 
-        
-            
-    }
+                }
+                
+            }
+                 
+        }
 
     function computeMean(){
 
-        length = dataset.length;
+            //length = dataset.length;
 
-        let total = parseInt(document.getElementById("enterNum").value);
-        let number = dataset;
-        let count = 0;
+            //let total = parseInt(document.getElementById("enterNum").value);
+        let sum = 0;
 
-            for(let i = 0; i < number.length; i++){
-            console.log(number[i++]);
+        for(let i = 0; i < dataset.length; i++){
+            console.log(dataset[i]);
+            sum = sum + dataset[i];
+        }
+        let divisor = dataset.length;
 
-        //for(let total = 0; total == length.length; total++){
-            //console.log(length[i] + " is at index " + i);
-            //divisor = console.log(dataset.length);
+        let meanAnswer = sum/divisor;
 
-
+        
 
         document.getElementById("Mean").innerHTML = "Mean";
-        //document.getElementById("meanWritten").innerHTML = "Mean is " + meanAnswer + ".";
-            
-     }
+        document.getElementById("meanWritten").innerHTML = "Mean is " + meanAnswer + ".";
+                
+        
 
     }
         
