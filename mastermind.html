@@ -37,7 +37,7 @@
 
 		<script>
 			let code = [];
-			//let resetGame();
+			resetGame();
 			
 			function resetGame() {
 				code = [];
@@ -47,12 +47,12 @@
 					code.push(Math.floor(Math.random() * 6) + 1);
 				
 				// Clear past guesses
-				document.getElementByID('pastGuesses').innerHTML = "";
+				document.getElementById('pastGuesses').innerHTML = "";
 				
 				// Return each input field to its beginning state
 				for (let i = 1; i <= 4; i++) {
 					let slot = document.getElementById('slot' + i);
-					slot.disabled = False;
+					slot.disabled = false;
 					slot.value = '';
 					slot.style.backgroundColor = 'white';
 					slot.style.color = 'black';
@@ -71,30 +71,32 @@
 					document.getElementById('slot' + i).value = ('');
 			}
 		
-			// TODO: Create custom error class
-		
-			function checkInput(slot) {				
-				// TODO: Add try/catch
+			//TODO: Create custom error class
 
-                // Creating custom errors
-            class RuleError extends RuleError{
+            //Creating custom errors
+            class CustomError extends Error{
              constructor(message) {
                 super('You have invoked a custom error');
                 this.name = "Custom Error";
                 }
             }
+		
+			function checkInput(slot) {				
+				// TODO: Add try/catch
+
+                
                 try {
                     if(isNaN(slot))
-                        throw new RuleError(alert("Rule Error: Slots must contain numbers only"));
+                        throw new CustomError(alert("Rule Error: Slots must contain numbers only"));
                      else (slot < 1 || slot > 6)
-                        throw new RuleError(alert("Rule Error: Only numbers between 1 and 6 are accepted!"));
+                        throw new CustomError(alert("Rule Error: Only numbers between 1 and 6 are accepted!"));
 
 
                     
 
-                }catch(RuleError){
-                    console.log(RuleError.name);
-                    console.log(RuleError.message);
+                }catch(Error){
+                    console.log(Error.name);
+                    console.log(Error.message);
                     return false;
 
                 }
@@ -166,8 +168,10 @@
 							output += '&#9817;';
 						
 						// Update display
-						let currentDisplay = document.getElementById('pastGesses');
-						currentDisplay.innerHTML = output + '</p>' + currentDisplay.innerHTML;	
+						let currentDisplay = document.getElementById('pastGuesses').innerHTML = output + '</p>';
+						currentDisplay = output + '</p>' + currentDisplay;	
+
+                        console.log(currentDisplay);
 
 						clearSlots();
                         }
