@@ -75,6 +75,31 @@
 		
 			function checkInput(slot) {				
 				// TODO: Add try/catch
+
+                // Creating custom errors
+            class RuleError extends RuleError{
+             constructor(message) {
+                super('You have invoked a custom error');
+                this.name = "Custom Error";
+                }
+            }
+                try {
+                    if(isNaN(slot))
+                        throw new RuleError(alert("Rule Error: Slots must contain numbers only"));
+                     else (slot < 1 || slot > 6)
+                        throw new RuleError(alert("Rule Error: Only numbers between 1 and 6 are accepted!"));
+
+
+                    
+
+                }catch(RuleError){
+                    console.log(RuleError.name);
+                    console.log(RuleError.message);
+                    return false;
+
+                }
+
+
 				return true;
 			}
 		
