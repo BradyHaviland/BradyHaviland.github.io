@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        
+        <title>DOM Puzzle</title>
+        <a href="mastermind.html">Mastermind</a>
+        <a href="mathtab.html">Geometry Calculator</a>
+        <a href="tictactoe.html">Tic Tac Toe</a>
+        <a href="aritmeticcalc.html">Arithmetic Mean Calculator</a>
+        <a href="memorymatch.html">Memory Match</a>
+        <a href ="index.html">Brady's Porfolio</a>
+        
+        <style>
+            /* NOTE: Do NOT modify this stylesheet */
+            #puzzle {
+                width: 500px;
+                height: 500px;
+                border: 5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NOTE: Do NOT modify the body or div -->
+        <div id='puzzle'></div>
+        <script>
+        // All puzzle code must be implemented here
+        const h1 = document.createElement("h1");
+        h1.setAttribute("id","puzzleTitle");
+        h1.textContent = "DOM Puzzle";
+        //let body = document.getElementsByTagName("body");
+        document.body.prepend(h1);
+        //.appendChild(h1);
+        //document.getElementById("puzzleTitle").textContent = "DOM Puzzle";
+        console.log(h1);
+
+        
+
+        </script>
+    </body>
+</html>
