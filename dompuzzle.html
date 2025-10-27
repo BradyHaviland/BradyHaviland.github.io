@@ -91,15 +91,15 @@
         newDiv.appendChild(bigButtons4);
         console.log(bigButtons4);
         
-        function createBigButtons(bigButtons){
-            let row = 2;
-            let column = 2;
-            for(row = 0; row < 2; row++){
-                for (column = 0; column < 2; column++);
-            }
-            bigButtons(row)(column);
+        // function createBigButtons(bigButtons){
+        //     let row = 2;
+        //     let column = 2;
+        //     for(row = 0; row < 2; row++){
+        //         for (column = 0; column < 2; column++);
+        //     }
+        //     bigButtons(row)(column);
             
-        }
+        // }
 
         const newDiv2 = document.createElement("div");
         newDiv2.textContent = '';
@@ -143,7 +143,7 @@
 
                     if (buttonCount > 50)
                         break;    //prematurely exits the loop
-                    console.log(buttonCount);
+                    //console.log(buttonCount);
 
                 } while (buttonCount != 50);
 
@@ -159,12 +159,21 @@
 
                     if (buttonCountsAgain > 50)
                         break;    //prematurely exits the loop
-                    console.log(buttonCountsAgain);
+                    //console.log(buttonCountsAgain);
 
                 } while (buttonCountsAgain != 50);
 
         littleButtons.addEventListener("click", () => {
-            littleButtons.style.backgroundColor = "#4A2574";
+                let newButtons = document.createElement("button");
+                newButtons.style.width ="25px";
+                newButtons.style.height ="24px";
+                newButtons.style.backgroundColor = "#4A2574";
+                newButtons.previousElementSibling.style.backgroundColor ="#FF9E00";
+                newButtons.nextElementSibling.style.backgroundColor ="#FF9E00";
+            
+            
+            
+            console.log(event.littleButtons);
         });
 			
 
