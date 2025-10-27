@@ -53,7 +53,92 @@
             console.log("Mouse has left the border.");
         });
 
-        let buttons = document.createElement("button");
+        let bigButtons = document.createElement("button");
+        bigButtons.textContent = "A";
+        bigButtons.style.color = "white";
+        bigButtons.style.width ="125px";
+        bigButtons.style.height ="125px";
+        bigButtons.style.backgroundColor = "#9455F4";
+        border.appendChild(bigButtons);
+
+        let bigButtons2 = document.createElement("button");
+        bigButtons2.textContent = "B";
+        bigButtons2.style.color = "white";
+        bigButtons2.style.width ="125px";
+        bigButtons2.style.height ="125px";
+        bigButtons2.style.backgroundColor = "#4A2B74";
+        border.appendChild(bigButtons2);
+        console.log(bigButtons2);
+
+        const newDiv = document.createElement("div");
+        border.appendChild(newDiv);
+
+        let bigButtons3 = document.createElement("button");
+        bigButtons3.textContent = "C";
+        bigButtons3.style.color = "white";
+        bigButtons3.style.width ="125px";
+        bigButtons3.style.height ="125px";
+        bigButtons3.style.backgroundColor = "#594492";
+        newDiv.appendChild(bigButtons3);
+        console.log(bigButtons3);
+
+        let bigButtons4 = document.createElement("button");
+        bigButtons4.textContent = "D";
+        bigButtons4.style.color = "white";
+        bigButtons4.style.width ="125px";
+        bigButtons4.style.height ="125px";
+        bigButtons4.style.backgroundColor = "#854DDC";
+        newDiv.appendChild(bigButtons4);
+        console.log(bigButtons4);
+        
+        function createBigButtons(bigButtons){
+            let row = 2;
+            let column = 2;
+            for(row = 0; row < 2; row++){
+                for (column = 0; column < 2; column++);
+            }
+            bigButtons(row)(column);
+            
+        }
+
+        const newDiv2 = document.createElement("div");
+        newDiv2.textContent = '';
+        border.appendChild(newDiv2);
+        newDiv2.style.width ="125px";
+        newDiv2.style.height ="125px";
+        newDiv2.style.float = "right";
+
+        const newDiv3 = document.createElement("div");
+        newDiv3.textContent = "";
+        newDiv3.style.width ="125px";
+        newDiv3.style.height ="125px";
+        newDiv3.style.float = "right";
+        border.appendChild(newDiv3);
+
+        let littleButtons = document.createElement("button");
+        littleButtons.style.width ="25px";
+        littleButtons.style.height ="24px";
+        littleButtons.style.backgroundColor = "#C39CFE";
+        
+
+        newDiv3.appendChild(littleButtons);
+
+        
+
+        
+
+
+
+        
+
+        
+
+
+
+        let bigPuzzle = document.getElementById("puzzle");
+            bigPuzzle.style.backgroundColor = "#7338A0";
+
+
 
 
 
