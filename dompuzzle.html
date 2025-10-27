@@ -115,7 +115,7 @@
         newDiv3.style.float = "right";
         border.appendChild(newDiv3);
 
-        // let littleButtons = document.createElement("button");
+        let littleButtons = document.createElement("button");
         // littleButtons.style.width ="25px";
         // littleButtons.style.height ="24px";
         // littleButtons.style.backgroundColor = "#C39CFE";
@@ -129,10 +129,6 @@
         
 
         // newDiv3.append(littleButtons2);
-        
-        
-
-       
 
         let buttonCount = 0;
 
@@ -166,6 +162,10 @@
                     console.log(buttonCountsAgain);
 
                 } while (buttonCountsAgain != 50);
+
+        littleButtons.addEventListener("click", () => {
+            littleButtons.style.backgroundColor = "#4A2574";
+        });
 			
 
 
