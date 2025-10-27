@@ -41,17 +41,19 @@
         const border = document.getElementById("puzzle");
 
         border.addEventListener("mouseenter", (event) => {
-            document.getElementById("puzzle").style = "border: 5px solid red";
+            border.style.borderColor = "red";
             //document.getElementById("puzzle"). = "border: red";
  
             console.log("Mouse entered.");
         });
 
-        border.addEventListener("mouseleave", () => {
-            document.getElementById("puzzle").style = "border: 5px solid black";
+        border.addEventListener("mouseleave", (event) => {
+            border.style.borderColor = "black";
 
             console.log("Mouse has left the border.");
         });
+
+        let buttons = document.createElement("button");
 
 
 
