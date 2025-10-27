@@ -115,15 +115,60 @@
         newDiv3.style.float = "right";
         border.appendChild(newDiv3);
 
-        let littleButtons = document.createElement("button");
-        littleButtons.style.width ="25px";
-        littleButtons.style.height ="24px";
-        littleButtons.style.backgroundColor = "#C39CFE";
+        // let littleButtons = document.createElement("button");
+        // littleButtons.style.width ="25px";
+        // littleButtons.style.height ="24px";
+        // littleButtons.style.backgroundColor = "#C39CFE";
+
+        //  newDiv3.appendChild(littleButtons);
+
+        // let littleButtons2 = document.createElement("button");
+        // littleButtons2.style.width ="25px";
+        // littleButtons2.style.height ="24px";
+        // littleButtons2.style.backgroundColor = "#C39CFE";
         
 
-        newDiv3.appendChild(littleButtons);
-
+        // newDiv3.append(littleButtons2);
         
+        
+
+       
+
+        let buttonCount = 0;
+
+                do {
+                     
+                    ++buttonCount; 
+                    let littleButtons = document.createElement("button");
+                    littleButtons.style.width ="25px";
+                    littleButtons.style.height ="24px";
+                    littleButtons.style.backgroundColor = "#C39CFE";
+                    newDiv3.appendChild(littleButtons);
+
+                    if (buttonCount > 50)
+                        break;    //prematurely exits the loop
+                    console.log(buttonCount);
+
+                } while (buttonCount != 50);
+
+        let buttonCountsAgain = 0;
+                do {
+                     
+                    ++buttonCountsAgain; 
+                    let littleButtons = document.createElement("button");
+                    littleButtons.style.width ="25px";
+                    littleButtons.style.height ="24px";
+                    littleButtons.style.backgroundColor = "#C39CFE";
+                    newDiv2.appendChild(littleButtons);
+
+                    if (buttonCountsAgain > 50)
+                        break;    //prematurely exits the loop
+                    console.log(buttonCountsAgain);
+
+                } while (buttonCountsAgain != 50);
+			
+
+
 
         
 
