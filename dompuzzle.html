@@ -25,7 +25,7 @@
         <script>
         // All puzzle code must be implemented here
         const h1 = document.createElement("h1");
-        h1.setAttribute("id","puzzleTitle");
+        //h1.setAttribute("id","puzzleTitle");
         h1.textContent = "DOM Puzzle";
         //let body = document.getElementsByTagName("body");
         document.body.prepend(h1);
@@ -37,6 +37,21 @@
         paragraph.textContent = "This is a puzzle created entirely with JavaScript.";
         console.log(paragraph);
         document.body.append(paragraph);
+
+        const border = document.getElementById("puzzle");
+
+        border.addEventListener("mouseenter", (event) => {
+            document.getElementById("puzzle").style = "border: 5px solid red";
+            //document.getElementById("puzzle"). = "border: red";
+ 
+            console.log("Mouse entered.");
+        });
+
+        border.addEventListener("mouseleave", () => {
+            document.getElementById("puzzle").style = "border: 5px solid black";
+
+            console.log("Mouse has left the border.");
+        });
 
 
 
