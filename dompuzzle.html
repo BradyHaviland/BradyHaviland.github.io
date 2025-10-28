@@ -115,7 +115,11 @@
         newDiv3.style.float = "right";
         border.appendChild(newDiv3);
 
-        let littleButtons = document.createElement("button");
+        let bigPuzzle = document.getElementById("puzzle");
+            bigPuzzle.style.backgroundColor = "#7338A0";
+
+
+         //let littleButtons = document.createElement("button");
         // littleButtons.style.width ="25px";
         // littleButtons.style.height ="24px";
         // littleButtons.style.backgroundColor = "#C39CFE";
@@ -131,15 +135,29 @@
         // newDiv3.append(littleButtons2);
 
         let buttonCount = 0;
+        let buttonID = 0;
 
                 do {
                      
                     ++buttonCount; 
+                    ++buttonID;
                     let littleButtons = document.createElement("button");
+                    littleButtons.setAttribute("id",buttonID);
                     littleButtons.style.width ="25px";
                     littleButtons.style.height ="24px";
                     littleButtons.style.backgroundColor = "#C39CFE";
                     newDiv3.appendChild(littleButtons);
+                    littleButtons.addEventListener("click", (event) => {
+                if(event.target.littleButtons.contains(buttonID)){
+                littleButtons.style.backgroundColor = "#4A2574";
+                littleButtons.previousElementSibling.style.backgroundColor ="#FF9E00";
+                littleButtons.nextElementSibling.style.backgroundColor ="#FF9E00";
+                 
+            
+                }
+            
+            console.log(event.littleButtons);
+        });
 
                     if (buttonCount > 50)
                         break;    //prematurely exits the loop
@@ -151,11 +169,24 @@
                 do {
                      
                     ++buttonCountsAgain; 
+                    ++buttonID;
                     let littleButtons = document.createElement("button");
+                    littleButtons.setAttribute("id",buttonID);
                     littleButtons.style.width ="25px";
                     littleButtons.style.height ="24px";
                     littleButtons.style.backgroundColor = "#C39CFE";
                     newDiv2.appendChild(littleButtons);
+                    littleButtons.addEventListener("click", (event) => {
+                if(event.target.littleButtons.contains(buttonID)){
+                littleButtons.style.backgroundColor = "#4A2574";
+                littleButtons.previousElementSibling.style.backgroundColor ="#FF9E00";
+                littleButtons.nextElementSibling.style.backgroundColor ="#FF9E00";
+                 
+            
+                }
+            
+            console.log(event.littleButtons);
+        });
 
                     if (buttonCountsAgain > 50)
                         break;    //prematurely exits the loop
@@ -163,18 +194,7 @@
 
                 } while (buttonCountsAgain != 50);
 
-        littleButtons.addEventListener("click", () => {
-                let newButtons = document.createElement("button");
-                newButtons.style.width ="25px";
-                newButtons.style.height ="24px";
-                newButtons.style.backgroundColor = "#4A2574";
-                newButtons.previousElementSibling.style.backgroundColor ="#FF9E00";
-                newButtons.nextElementSibling.style.backgroundColor ="#FF9E00";
-            
-            
-            
-            console.log(event.littleButtons);
-        });
+        
 			
 
 
@@ -189,8 +209,7 @@
 
 
 
-        let bigPuzzle = document.getElementById("puzzle");
-            bigPuzzle.style.backgroundColor = "#7338A0";
+        
 
 
 
