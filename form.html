@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Submission Form</title>
+    <a href="mathtab.html">Geometry Calculator</a>
+    <a href="tictactoe.html">Tic Tac Toe</a>
+    <a href="aritmeticcalc.html">Arithmetic Mean Calculator</a>
+    <a href="memorymatch.html">Memory Match</a>
+    <a href="mastermind.html">Mastermind</a>
+    <a href="dompuzzle.html">DOM Puzzle</a>
+    <a href ="index.html">Brady's Porfolio</a>
+</head>
+<body>
+    <h1>Comment Submission Form</h1>
+
+     <form onsubmit="return false;" id="commentForm" method="post">
+
+        <label for="name">Name:</label>
+        <input id="name"
+               type="text"
+               name="name"
+               pattern="[a-zA-Z_ ]"
+               title="Name must be letters only."
+               ><br><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber"
+               type="tel"
+               name="phoneNumber"
+               pattern="(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
+               ><br><br>
+
+        <label for="email">Email:</label>
+        <input id="email" 
+               type ="email" 
+               name="email"
+               autocomplete="email"
+               ><br><br>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment"
+               type ="text" 
+               name="comment">
+        </textarea>
+        <br><br>
+
+        <label for="username">Username:</label>
+        <input id="username" 
+               type="text" 
+               name="username"
+               pattern="[a-zA-Z0-9_]{4,8}"
+               title="Username must be 4-8 letters, numbers and underscores."
+               ><br><br>
+
+        <label for="password">Password:</label>
+        <input id="password" 
+               type="password" 
+               name="password"
+               minlength="8"
+               maxlength="16"
+               ><br><br>
+
+        <p id="usernameMessage">Username is incomplete.</p>
+        <p id="usernameNotHave"></p>
+        <p id="passwordMessage">Password is incomplete.</p>
+       
+        <button type="submit">Submit Comment</button>
+
+
+    </form>
+    <script>
+
+        document.getElementById("commentForm").addEventListener("submit",function(event){
+            console.log("Submitting form...");
+            let name = sanitizeHTML(document.getElementById('name').value);
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let email = sanitizeHTML(document.getElementById("email").value);
+            let comment = sanitizeHTML(document.getElementById("comment").value);
+            let username = sanitizeHTML(document.getElementById("username").value);
+            let password = sanitizeHTML(document.getElementById("password").value);
+        });
+        //At least 8 characters, ,lower-case letter, upper-case letter, 
+        // number,
+        // special character
+        document.getElementById("password").addEventListener("input", function(){
+            console.log("The user is typing...");
+            let password = this.value;
+
+            let message = document.getElementById("passwordMessage");
+            const missing = [];
+
+            if(password.length < 8){
+                missing.push("8-character minimum");
+            }
+
+            let hasLower = /[a-z]/.test(password);
+            if(!hasLower)
+                missing.push(" lower-case letter");
+
+            let hasUpper = /[A-Z]/.test(password);
+            if(!hasUpper)
+                missing.push(" upper-case letter");
+
+            let hasNumber = /[0-9]/.test(password);
+            if(!hasNumber)
+                missing.push(" number");
+
+            let hasSpecial = /[!@#$%^&*()]/.test(password);
+            if(!hasSpecial)
+                missing.push(" special character");
+
+            message.innerHTML = "Password is missing an: " + missing;
+        });
+
+        document.getElementById("username").addEventListener("input", function(){
+            console.log("The user is typing...");
+            let username = this.value;
+
+            let message = document.getElementById("usernameMessage");
+            let messageNotHave = document.getElementById("usernameNotHave");
+
+            const missing = [];
+            const notHave = [];
+
+            if(username.length < 3){
+                missing.push(" 3-character minimum");
+                message.innerHTML = "Username is missing a : " + missing;
+                } else{
+                message.innerHTML ="";
+            }
+
+            let hasSpecial = /[!@#$%^&*()-+=]/.test(username);
+            if(hasSpecial){
+                messageNotHave.innerHTML = "Username can only have underscores no other special characters. ";
+            } else{
+                messageNotHave.innerHTML ="";
+            }
+            //messageNotHave.innerHTML = "Username can only have underscores no other special characters. " + notHave;
+        });
+
+        function sanitizeHTML(str){
+            let output ="";
+            for(char in str){
+                if(char == "<"){
+                    output+='&lt;';
+                } else if (char == ">"){
+                    output+= "&gt;";
+                } else if (char == "&"){
+                    output+= "&amp;";
+                } else if (char == '"'){
+                    output+= "&quot;";
+                } else if (char == "'"){
+                    output+= "&apos;";
+                } else{
+                    output+= char;
+                }
+            }
+            return output;
+        }
+
+
+    </script>
+
+    
+</body>
+</html>
