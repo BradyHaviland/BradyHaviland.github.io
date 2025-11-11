@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <a href="index.html">Brady's Portfolio</a>
+    <a href="mathtab.html">Geometry Calculator</a>
+    <a href="aritmeticcalc.html">Arithmetic Mean Calculator</a>
+    <a href="memorymatch.html">Memory Match</a>
+    <a href="mastermind.html">Mastermind</a>
+    <a href="dompuzzle.html">DOM Puzzle</a>
+    <a href="form.html">Comment Submission Form</a>
+    <a href="tictactoe.html">Tic Tac Toe</a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form>
+
+        <h2>Sign In</h2>
+		<label for="username">Username</label>
+		<input type="text" id="username" pattern="^[a-zA-Z0-9_]+$" autocomplete="username"></input> <br><br>
+		<button onclick="signIn()">Sign In</button>
+		<hr>
+
+        <label for="taskItem">Task(s):</label>
+        <input id="taskItem"
+               type="text"
+               pattern="^[a-zA-Z0-9_]"
+               title="Tasks must be letters or numbers only."
+               ><br><br>
+               <button onclick="addToTasks()">Add Tasks</button>
+		        <p>To-Do: <span id="list">None</span></p>
+		        <button onclick="clearSession()">Clear Tasks</button>
+
+    </form>
+
+    
+
+    <script>
+        function getCookie(name) {
+                const cookies = document.cookie.split(";");
+                for ( let i = 0; i < cookies.length; i++){
+                    let cookie = cookies[i].trim();
+
+                    if (cookie.startsWith(name + '='))
+                        return(cookie.substring(name.length + 1));
+                }
+				
+			}
+
+			function removeCookie() {
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                location.reload(true);
+				
+			}
+        function addToTasks() {
+				const task = document.getElementById("taskItem");
+
+				if (!task.checkValidity()){
+					return;
+				}
+
+				let taskList = sessionStorage.getItem("taskList");
+				taskList = taskList ? taskList + ", " : "";
+				taskList += task.value;
+				sessionStorage.setItem("taskList", taskList);
+				document.getElementById("list").textContent = taskList;
+				
+			}
+
+            function signIn() {
+                let username = document.getElementById('username');
+				clearSession();
+
+                if (!user.checkValidity()){
+                    alert("Invalid username");
+                    return;
+                }
+                let date = new Date();
+                date.setTime(date.getTime() + (24 * 60 * 60 * 1000 ));
+
+                let expires = "expires=" + date.toUTCString();
+                document.cookie = "username=" + username.value + "; " + expires + "; path=/";
+                //document.cookie = "fav_color=blue; " + expires;
+               // alert(expires);
+
+               location.reload(true);
+
+        
+				
+			}
+            let currentUser = null;
+			function loadUser() {
+                currentUser = getCookie("username");
+                currentUser = currentUser ? currentUser : "Guest";
+                document.getElementById("currentUser").textContent = currentUser;
+
+                if ( currentUser !== "Guest"){
+                    const color = localStorage.getItem(currentUser + "color");
+                    
+                    if (color){
+                        document.body.style.backgroundColor = color;
+                    }
+					let taskList = sessionStorage.getItem("taskList");
+					taskList = taskList ? taskList : "None";
+					document.getElementById("list").textContent = taskList;
+                }
+				
+			}
+    </script>
+    
+</body>
+</html>
