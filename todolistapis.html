@@ -13,28 +13,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
 </head>
-<body>
+<body id="body">
     <h1>To-Do List</h1>
 
     <p id="welcome">Welcome <span id="currentUser"></span>!</p>
-		<button onclick="removeCookie()">Sign Out</button>
+		<button id="removeCookie" onclick="removeCookie()">Sign Out</button>
 		<hr>
 
-    <form>
+    
+        <h2>Sign In</h2>
+		<label for="username">Username</label>
+		<input type="text" id="username" pattern="^[a-zA-Z0-9_]+$" autocomplete="username"></input> <br><br>
+		<button id="signIn" onclick="signIn()">Sign In</button>
+		<hr>
+
 
         <h2>Settings</h2>
 		<label for="screenMode">Click preferred mode: Light or Dark</label><br><br>
         <button id="lightMode" onclick="lightMode()">Light Mode</button><br><br>
-        <button id="darkMode" onclick="removeCookie()">Dark Mode</button>
+        <button id="darkMode" onclick="darkMode()">Dark Mode</button>
         <br><br>
-		<button onclick="saveSettings()">Update and Save</button>
+		<button id="saveSettings" onclick="saveSettings()">Update and Save</button>
 		<hr>
 
-        <h2>Sign In</h2>
-		<label for="username">Username</label>
-		<input type="text" id="username" pattern="^[a-zA-Z0-9_]+$" autocomplete="username"></input> <br><br>
-		<button onclick="signIn()">Sign In</button>
-		<hr>
+        
 
         <label for="taskItem">Task(s):</label>
         <input id="taskItem"
@@ -42,11 +44,11 @@
                pattern="^[a-zA-Z0-9 ]+$"
                title="Tasks must be letters or numbers only."
                ><br><br>
-               <button onclick="addToTasks()">Add Tasks</button>
+               <button id="addToTasks" onclick="addToTasks()">Add Tasks</button>
 		        <p>To-Do: <span id="list">None</span></p>
-		        <button onclick="clearSession()">Clear Tasks</button>
+		        <button id="clearSession" onclick="clearSession()">Clear Tasks</button>
 
-    </form>
+    
 
     
 
@@ -62,11 +64,62 @@
 				
 			}
 
-			function removeCookie() {
-                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                location.reload(true);
+		function removeCookie() {
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            location.reload(true);
+				
+	        }
+
+        function signIn() {
+            let username = document.getElementById('username');
+			clearSession();
+
+            if (!user.checkValidity()){
+                    alert("Invalid username");
+                    return;
+                }
+            let date = new Date();
+            date.setTime(date.getTime() + (24 * 60 * 60 * 1000 ));
+
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = "username=" + username.value + "; " + expires + "; path=/";
+
+            location.reload(true);
+
+        
 				
 			}
+
+        let currentUser = null;
+			function loadUser() {
+                currentUser = getCookie("username");
+                currentUser = currentUser ? currentUser : "Guest";
+                document.getElementById("currentUser").textContent = currentUser;
+
+                if ( currentUser !== "Guest" && darkMode()){
+                    const mode = localStorage.getItem(currentUser + "darkMode");
+                    
+                    if (mode){
+                        document.body.style.backgroundColor = mode;
+                    }
+					let taskList = sessionStorage.getItem("taskList");
+					taskList = taskList ? taskList : "None";
+					document.getElementById("list").textContent = taskList;
+                }
+				
+			}
+            function saveSettings() {
+                const mode = document.getElementById('');
+
+                if (!currentUser || currentUser === 'Guest'){
+                    alert("Must be signed in to save.");
+                    return;
+                }
+
+                document.body.style.backgroundColor = mode.value;
+				localStorage.setItem(currentUser + 'mode', mode.value);
+			}
+
         function addToTasks() {
 				const task = document.getElementById("taskItem");
 
@@ -77,64 +130,46 @@
 				let taskList = sessionStorage.getItem("taskList");
 				taskList = taskList ? taskList + ", " : "";
 				taskList += task.value;
+                const jsonobject = JSON.parse(task.value);
+                console.log(jsonobject);
 				sessionStorage.setItem("taskList", taskList);
 				document.getElementById("list").textContent = taskList;
 				
 			}
 
-            function signIn() {
-                let username = document.getElementById('username');
-				clearSession();
+            
 
-                if (!user.checkValidity()){
-                    alert("Invalid username");
-                    return;
-                }
-                let date = new Date();
-                date.setTime(date.getTime() + (24 * 60 * 60 * 1000 ));
+            function darkMode() {
+                document.getElementById('body').style = "background-color: black; color: white;" ;
+                document.getElementById('darkMode').style = "background-color: gray; color: white;" ;
+                document.getElementById('lightMode').style = "background-color: gray; color: white;" ;
+                document.getElementById('removeCookie').style = "background-color: gray; color: white;" ;
+                document.getElementById('saveSettings').style = "background-color: gray; color: white;" ;
+                document.getElementById('signIn').style = "background-color: gray; color: white;" ;
+                document.getElementById('clearSession').style = "background-color: gray; color: white;" ;
+                document.getElementById('addToTasks').style = "background-color: gray; color: white;" ;
+                
+                
+                
+            }
 
-                let expires = "expires=" + date.toUTCString();
-                document.cookie = "username=" + username.value + "; " + expires + "; path=/";
+        function lightMode() {
 
-               location.reload(true);
+            document.getElementById('body').style = "background-color: white; color: black;" ;
+            document.getElementById('lightMode').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('darkMode').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('removeCookie').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('saveSettings').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('signIn').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('clearSession').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+            document.getElementById('addToTasks').style = "background-color: #EFEFEF; color: black; border: 0.5px double black; border-radius: 3px;"  ;
+    
+        }
 
-        
-				
-			}
-            let currentUser = null;
-			function loadUser() {
-                currentUser = getCookie("username");
-                currentUser = currentUser ? currentUser : "Guest";
-                document.getElementById("currentUser").textContent = currentUser;
+            
+            
 
-                if ( currentUser !== "Guest"){
-                    const mode = localStorage.getItem(currentUser + "color");
-                    
-                    if (mode){
-                        document.body.style.backgroundColor = color;
-                    }
-					let taskList = sessionStorage.getItem("taskList");
-					taskList = taskList ? taskList : "None";
-					document.getElementById("list").textContent = taskList;
-                }
-				
-			}
-
-            function saveSettings() {
-                const mode = document.getElementById('colorInput');
-
-                if (!color.checkValidity()){
-                    alert("invalid color");
-                    return;
-                }
-                if (!currentUser || currentUser === 'Guest'){
-                    alert("Must be signed in to save.");
-                    return;
-                }
-
-                document.body.style.backgroundColor = color.value;
-				localStorage.setItem(currentUser + 'color', color.value);
-			}
+            
 
             function clearSession() {
 				sessionStorage.clear();
