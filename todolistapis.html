@@ -15,7 +15,20 @@
 </head>
 <body>
     <h1>To-Do List</h1>
+
+    <p id="welcome">Welcome <span id="currentUser"></span>!</p>
+		<button onclick="removeCookie()">Sign Out</button>
+		<hr>
+
     <form>
+
+        <h2>Settings</h2>
+		<label for="screenMode">Click preferred mode: Light or Dark</label><br><br>
+        <button id="lightMode" onclick="lightMode()">Light Mode</button><br><br>
+        <button id="darkMode" onclick="removeCookie()">Dark Mode</button>
+        <br><br>
+		<button onclick="saveSettings()">Update and Save</button>
+		<hr>
 
         <h2>Sign In</h2>
 		<label for="username">Username</label>
@@ -26,7 +39,7 @@
         <label for="taskItem">Task(s):</label>
         <input id="taskItem"
                type="text"
-               pattern="^[a-zA-Z0-9_]"
+               pattern="^[a-zA-Z0-9 ]+$"
                title="Tasks must be letters or numbers only."
                ><br><br>
                <button onclick="addToTasks()">Add Tasks</button>
@@ -82,8 +95,6 @@
 
                 let expires = "expires=" + date.toUTCString();
                 document.cookie = "username=" + username.value + "; " + expires + "; path=/";
-                //document.cookie = "fav_color=blue; " + expires;
-               // alert(expires);
 
                location.reload(true);
 
@@ -97,9 +108,9 @@
                 document.getElementById("currentUser").textContent = currentUser;
 
                 if ( currentUser !== "Guest"){
-                    const color = localStorage.getItem(currentUser + "color");
+                    const mode = localStorage.getItem(currentUser + "color");
                     
-                    if (color){
+                    if (mode){
                         document.body.style.backgroundColor = color;
                     }
 					let taskList = sessionStorage.getItem("taskList");
@@ -108,6 +119,30 @@
                 }
 				
 			}
+
+            function saveSettings() {
+                const mode = document.getElementById('colorInput');
+
+                if (!color.checkValidity()){
+                    alert("invalid color");
+                    return;
+                }
+                if (!currentUser || currentUser === 'Guest'){
+                    alert("Must be signed in to save.");
+                    return;
+                }
+
+                document.body.style.backgroundColor = color.value;
+				localStorage.setItem(currentUser + 'color', color.value);
+			}
+
+            function clearSession() {
+				sessionStorage.clear();
+				location.reload(true);
+				
+			}
+
+			loadUser();
     </script>
     
 </body>
