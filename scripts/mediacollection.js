@@ -29,11 +29,6 @@ class boardGame {
         //document.getElementById("media").appendChild(content.name);
         //document.getElementById("media").appendChild(content.name);
         //console.log(this.name);
-        // console.log(this.name + " Prepares to attack " + enemy.name + "...")
-        // if(this.#computeSuccess(enemy))
-        //     console.log("... and the attack is successful!");
-        // else
-        //     console.log("... but the attack fails miserably!");
     }
 
     toString(){
